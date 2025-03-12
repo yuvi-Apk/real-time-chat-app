@@ -1,0 +1,24 @@
+# Node dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+
+# Editor settings
+.vscode/*
+!.vscode/extensions.json
+.idea
+
+# OS-specific files
+.DS_Store
+
+# Visual Studio files (Not needed unless you use it)
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
