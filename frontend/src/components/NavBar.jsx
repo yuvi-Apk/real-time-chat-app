@@ -43,8 +43,8 @@ const NavBar = () => {
           </div>
         ) : (
           <div>
-              <Link to="/setting">
-              <MdSettingsSuggest className="hidden md:inline text-3xl font-light "/> <span> Setting</span>
+              <Link to="/setting" className="flex items-center gap-0.5">
+              <MdSettingsSuggest className=" text-3xl font-light "/> <span className="hidden md:inline text-3xl font-light "> Setting</span>
 
               </Link>
           </div>

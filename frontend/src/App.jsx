@@ -11,9 +11,13 @@ import NotFoundPage from "./pages/NotFoundPage";
 import { useAuthStore } from "./store/useAuthStore.js";
 import { TbLoader3 } from "react-icons/tb";
 import { Toaster } from "react-hot-toast";
+import { useThemeStore } from "./store/useThemeStore.js";
 
 const App = () => {
+
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
+
+  const { theme } = useThemeStore();
 
   useEffect(() => {
     checkAuth();
@@ -31,7 +35,7 @@ const App = () => {
   // }
 
   return (
-    <div>
+    <div data-theme={theme}>
       <NavBar />
       <Routes>
         <Route
