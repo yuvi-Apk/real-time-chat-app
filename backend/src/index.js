@@ -1,29 +1,40 @@
 import dotenv from "dotenv";
 import express from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
 import authRouter from "./routes/auth.route.js";
-import cookieParser from "cookie-parser"
-import {connectDB} from "./lib/db.js"
-
+import messageRouter from "./routes/message.route.js";
+import { connectDB } from "./lib/db.js";
 
 dotenv.config();
 const app = express();
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5001;
 
 // Middleware
-app.use(express.json()); // Allows JSON request body parsing
+app.use(express.json());
 app.use(cookieParser());
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
 
+// Routes
 app.use("/api/auth", authRouter);
+app.use("/api/message", messageRouter);
 
-// default code to mange the error
+// Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send("Something broke!");
+  res.status(err.status || 500).json({
+    message: err.message || "Internal Server Error",
+  });
 });
 
-// check the server is running or not
+// Start server
 app.listen(PORT, () => {
-  console.log(`Server is running at the Port NO: ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
   connectDB();
 });

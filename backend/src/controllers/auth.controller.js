@@ -119,6 +119,7 @@ export const updateProfile = async (req, res) => {
     const { profilepic } = req.body;
     const userId = req.user._id;
 
+    //error message 1
     if (!profilepic) {
       return res.status(400).json({ message: "Profile pic is required" });
     }
@@ -130,6 +131,7 @@ export const updateProfile = async (req, res) => {
 
     res.status(200).json(updatedUser)
   } catch (error) {
+    //error message 
     console.log("Error in the profile pic controllers",error.message)
     res.status(500).json({message:"Internal Server Error"});
   }
