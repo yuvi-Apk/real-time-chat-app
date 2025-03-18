@@ -5,7 +5,10 @@ import { FaFacebookF, FaApple } from "react-icons/fa";
 import { IoChevronBackOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
+
+
 const SignUpPage = () => {
+
   const [showPassword, setShowPassword] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [formData, setFormData] = useState({
@@ -86,7 +89,7 @@ const SignUpPage = () => {
       <div className="  w-[17.3rem] h-auto p-2.5! rounded-lg shadow-lg space-y-3! m-auto! md:w-[25rem] lg:w-[30rem] ">
         {/* upper text  */}
         <div className="text-left text-3xl font-bold">
-          <h2>Welcome Back!, Glad to see you, Again !</h2>
+          <h2>Hey !, Coom Soon Let's Chat !</h2>
         </div>
 
         {/* this fiv for the form  */}
