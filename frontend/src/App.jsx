@@ -41,7 +41,7 @@ const App = () => {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/setting" element={<SettingPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profile" element={authUser ?<ProfilePage />: <Navigate to="/login" />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Toaster position="top-center" reverseOrder={false} />
