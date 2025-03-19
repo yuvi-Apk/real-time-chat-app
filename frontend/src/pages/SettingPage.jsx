@@ -9,7 +9,7 @@ const SettingPage = () => {
 
   return (
     <div className="setting-page h-screen flex justify-center mt-3! ">
-      <div className="">
+      <div className=" mx-2!">
         <h2 className="text-bold text-3xl ">Theme</h2>
         <p className="inline-block py-4! text-2xl">Chose a theme for your chat interface !</p>
 

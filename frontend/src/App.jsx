@@ -26,18 +26,19 @@ const App = () => {
   console.log(authUser);
 
   //! Loader icons
-  // if (!isCheckingAuth && !authUser) {
-  //   return (
-  //     <div className="flex items-center justify-center h-screen">
-  //       <TbLoader3 className="text-white text-7xl animate-spin" />
-  //     </div>
-  //   );
-  // }
+  if (isCheckingAuth && !authUser) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <TbLoader3 className="text-white text-7xl animate-spin" />
+      </div>
+    );
+  }
 
   return (
     <div data-theme={theme}>
       <NavBar />
       <Routes>
+        {/* <Route path="/" element={<HomePage />} /> */}
         <Route
           path="/"
           element={authUser ? <HomePage /> : <Navigate to="/login" />}
