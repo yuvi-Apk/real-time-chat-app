@@ -57,7 +57,7 @@ const MessageInput = () => {
   };
 
   return (
-    <div className="p-4 w-full">
+    <div className=" w-full">
       {imagePreview && (
         <div className="mb-3 flex items-center gap-2">
           <div className="relative">
@@ -79,9 +79,9 @@ const MessageInput = () => {
 
       <form onSubmit={handleSendMessage} className="flex items-center gap-2">
         <div className="flex-1 flex gap-2">
-          <div className="border border-amber-700 rounded-lg w-full p-2 flex gap-2">
+          <div className="border rounded-lg w-full p-1! flex gap-2 items-center mx-2! mt-2.5!">
             <button
-              className="text-2xl"
+              className="text-2xl w-10"
               onClick={() => fileInputRef.current?.click()}
               type="button"
             >
@@ -89,7 +89,7 @@ const MessageInput = () => {
             </button>
 
             <input
-              className="border"
+              className=" w-full h-10 p-2!"
               type="text"
               placeholder="Let's Chat"
               value={text}
@@ -104,7 +104,7 @@ const MessageInput = () => {
               onChange={handleImageChange}
             />
 
-            <button className="text-2xl" type="submit">
+            <button className="text-2xl w-10" type="submit">
               <BiSend />
             </button>
           </div>

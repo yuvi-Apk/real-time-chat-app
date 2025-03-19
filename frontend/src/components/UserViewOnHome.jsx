@@ -12,7 +12,7 @@ const UserViewOnHome = ({users,selectedUser,onClick}) => {
 
       <div className='relative'>
 
-      <img className='border rounded-full p-0.5! bg-amber-50' src={users.profile || "/yuvi.jpeg"} alt="profile picture of the friends" />
+      <img className='border rounded-full p-0.5! bg-amber-50' src={users.profilepic || "/Avatar.png"} alt="profile picture of the friends" />
 
       <span className='size-3 rounded-full absolute bg-green-500 top-1 right-1 shadow-2xl'></span>
 

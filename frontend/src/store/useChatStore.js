@@ -46,7 +46,7 @@ export const useChatStore = create((set,get) => ({
       toast.success("message send succesfully")
       
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error(error.response?.data?.message)
       console.log("Error in send messages sections of the useChatStore",error)
     }
 

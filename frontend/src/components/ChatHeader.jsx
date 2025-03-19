@@ -17,7 +17,7 @@ const ChatHeader = ({ users }) => {
             <div className="relative">
               <img
                 className="border rounded-full p-0.5! bg-amber-50"
-                src={selectedUser.profile || "/yuvi.jpeg"}
+                src={selectedUser.profilepic || "/yuvi.jpeg"}
                 alt="profile picture of the friends"
               />
 
