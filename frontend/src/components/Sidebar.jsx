@@ -3,16 +3,18 @@ import { useChatStore } from "../store/useChatStore";
 import SidebarSkeleton from "./skeleton/SidebarSkeleton";
 import { FaUsers, FaUser } from "react-icons/fa";
 import UserViewOnHome from "./UserViewOnHome";
+import { useAuthStore } from "../store/useAuthStore";
 
 const Sidebar = () => {
   const { getUsers, users, selectedUser, setSelectedUser, isUserLoading } =
     useChatStore();
-
-  const onlineUsers = [];
+  const { onlineUsers } = useAuthStore();
 
   useEffect(() => {
     getUsers();
   }, [getUsers]);
+
+  // console.log(users)
 
   if (isUserLoading) return <SidebarSkeleton />;
 
@@ -29,9 +31,13 @@ const Sidebar = () => {
 
       {/* listes of user display componenets */}
       <div className="overflow-y-auto w-full py-3">
-
-        <UserViewOnHome users={users} />
-        
+        {users.map((curUser) => {
+          return <UserViewOnHome
+           selectedUser={selectedUser}
+            onClick={(e)=>setSelectedUser(curUser)}
+             key={curUser._id} 
+             users={curUser} />;
+        })}
       </div>
     </aside>
   );
