@@ -3,11 +3,12 @@ import toast from "react-hot-toast";
 import { FaApple, FaFacebookF } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { IoChevronBackOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate =useNavigate();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -34,13 +35,18 @@ const LoginPage = () => {
 
   // handle submit function
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log(formData);
+    // console.log(formData);
 
     if (validateForm()) {
-      login(formData);
+    const success= await  login(formData);
+    if(success){
+    navigate("/");
+
     }
+    }
+
   };
   return (
     <div

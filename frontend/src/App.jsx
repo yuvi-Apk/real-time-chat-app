@@ -15,7 +15,9 @@ import { useThemeStore } from "./store/useThemeStore.js";
 
 const App = () => {
 
-  const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
+  const { authUser, checkAuth, isCheckingAuth ,onlineUsers} = useAuthStore();
+
+  console.log("online users :::",{onlineUsers})
 
   const { theme } = useThemeStore();
 

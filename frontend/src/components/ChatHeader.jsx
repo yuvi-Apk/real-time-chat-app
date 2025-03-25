@@ -20,8 +20,8 @@ const ChatHeader = ({ users }) => {
                 src={selectedUser.profilepic || "/yuvi.jpeg"}
                 alt="profile picture of the friends"
               />
+              {onlineUsers.includes(selectedUser._id) &&(              <span className="size-2 rounded-full absolute bg-green-500 top-1 right-1 shadow-2xl"></span>)}
 
-              <span className="size-2 rounded-full absolute bg-green-500 top-1 right-1 shadow-2xl"></span>
             </div>
           </div>
           {/* 2nd div for the other content to dispaly  */}

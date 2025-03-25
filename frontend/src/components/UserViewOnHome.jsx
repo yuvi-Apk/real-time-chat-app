@@ -1,9 +1,10 @@
 import React from 'react'
+import { useAuthStore } from '../store/useAuthStore'
 
 const UserViewOnHome = ({users,selectedUser,onClick}) => {
   // console.log(users)
   // console.log(selectedUser)
-
+const {onlineUsers} =useAuthStore();
   return (
     <div className={`w-full h-20 text-2xl relative overflow-hidden ${ selectedUser && selectedUser._id === users._id ? 'bg-gray-200' : ''}`} onClick={onClick}>
 
@@ -13,8 +14,8 @@ const UserViewOnHome = ({users,selectedUser,onClick}) => {
       <div className='relative'>
 
       <img className='border rounded-full p-0.5! bg-amber-50' src={users.profilepic || "/Avatar.png"} alt="profile picture of the friends" />
-
-      <span className='size-3 rounded-full absolute bg-green-500 top-1 right-1 shadow-2xl'></span>
+      {onlineUsers.includes(users._id) &&(     <span className='size-3 rounded-full absolute bg-green-500 top-1 right-1 shadow-2xl'></span>)}
+ 
 
       </div>
 

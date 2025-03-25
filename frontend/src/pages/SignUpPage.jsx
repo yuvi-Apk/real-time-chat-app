@@ -3,12 +3,13 @@ import { useAuthStore } from "../store/useAuthStore";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF, FaApple } from "react-icons/fa";
 import { IoChevronBackOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
 
 const SignUpPage = () => {
 
+  const navigate =useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [formData, setFormData] = useState({
@@ -63,12 +64,16 @@ const SignUpPage = () => {
 
   // handle submit function
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     console.log(formData);
 
     if (validateForm()) {
-      signup(formData);
+     const success = signup(formData);
+
+     if(success){
+      navigate("/login")
+     }
     }
  
   };
