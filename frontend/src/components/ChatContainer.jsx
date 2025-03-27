@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useChatStore } from "../store/useChatStore";
 import MessageInput from "./MessageInput";
 import ChatHeader from "./ChatHeader";
@@ -7,15 +7,33 @@ import { useAuthStore } from "../store/useAuthStore";
 import { FaUserCircle } from "react-icons/fa";
 
 const ChatContainer = () => {
-  const { users, messages, isMessagesLoading, getMessages, selectedUser } =
-    useChatStore();
+  const {
+    users,
+    messages,
+    isMessagesLoading,
+    getMessages,
+    selectedUser,
+    realTimeMessage,
+    removeRealTimeMessage,
+  } = useChatStore();
   const { authUser } = useAuthStore();
+
+  const messageEndRef = useRef(null);
 
   useEffect(() => {
     getMessages(selectedUser._id);
-  }, [selectedUser._id, getMessages]);
+    realTimeMessage(selectedUser._id);
 
-  console.log(messages)
+    return () => removeRealTimeMessage();
+  }, [selectedUser._id, getMessages, realTimeMessage, removeRealTimeMessage]);
+
+  // console.log(messages);
+
+  useEffect(() => {
+    if (messageEndRef.current && messages) {
+      messageEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
 
   // Error handling
   if (isMessagesLoading) {
@@ -36,6 +54,7 @@ const ChatContainer = () => {
           return (
             <div
               key={message._id}
+              ref={messageEndRef}
               className={`chat m-2! ${
                 message.senderId === authUser._id ? "chat-end" : "chat-start"
               }`}

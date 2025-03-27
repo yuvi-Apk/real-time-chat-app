@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useChatStore } from "../store/useChatStore";
 import SidebarSkeleton from "./skeleton/SidebarSkeleton";
 import { FaUsers, FaUser } from "react-icons/fa";
@@ -9,6 +9,7 @@ const Sidebar = () => {
   const { getUsers, users, selectedUser, setSelectedUser, isUserLoading } =
     useChatStore();
   const { onlineUsers } = useAuthStore();
+  const [showOnlineOnly,setShowOnlineOnly] =useState(false);
 
   useEffect(() => {
     getUsers();
