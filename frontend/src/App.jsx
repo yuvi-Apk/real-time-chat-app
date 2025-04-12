@@ -3,7 +3,7 @@ import NavBar from "./components/NavBar";
 import { Navigate, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUpPage";
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./pages/LogInPage";
 import SettingPage from "./pages/SettingPage";
 import ProfilePage from "./pages/ProfilePage";
 import NotFoundPage from "./pages/NotFoundPage";
