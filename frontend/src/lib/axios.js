@@ -2,7 +2,7 @@ import axios from "axios";
 
 // ⭐ Updated: Simplified axios instance configuration
 export const axiosInstance = axios.create({
-  baseURL: "http://localhost:5001/api",
+  baseURL: "https://real-time-chat-app-d0hz.onrender.com/api",
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
